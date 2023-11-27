@@ -10,4 +10,4 @@ spring:
         - id: member
           predicates:
           - Path=/member/**
-          uri: lb://member
+          uri: http://127.0.0.1:8001
