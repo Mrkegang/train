@@ -1,4 +1,4 @@
-package www.kgstudy.train.member.aspect;
+package www.kgstudy.train.common.aspect;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.support.spring.PropertyPreFilters;

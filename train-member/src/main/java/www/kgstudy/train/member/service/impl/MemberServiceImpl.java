@@ -3,9 +3,11 @@ package www.kgstudy.train.member.service.impl;
 import cn.hutool.core.collection.CollUtil;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
+import www.kgstudy.train.common.resp.CommonResp;
 import www.kgstudy.train.member.domain.Member;
 import www.kgstudy.train.member.domain.MemberExample;
 import www.kgstudy.train.member.mapper.MemberMapper;
+import www.kgstudy.train.member.req.MemberRegisterReq;
 import www.kgstudy.train.member.service.MemberService;
 
 import java.util.List;
@@ -17,12 +19,13 @@ public class MemberServiceImpl implements MemberService {
     private MemberMapper memberMapper;
 
     @Override
-    public int count() {
+    public Integer count() {
         return Math.toIntExact(memberMapper.countByExample(null));
     }
 
     @Override
-    public long register(String mobile) {
+    public Long register(MemberRegisterReq req) {
+        String mobile = req.getMobile();
         MemberExample memberExample = new MemberExample();
         memberExample.createCriteria().andMobileEqualTo(mobile);
         List<Member> list = memberMapper.selectByExample(memberExample);
@@ -37,6 +40,6 @@ public class MemberServiceImpl implements MemberService {
         member.setMobile(mobile);
         memberMapper.insert(member);
 
-        return member.getId();
+        return  member.getId();
     }
 }

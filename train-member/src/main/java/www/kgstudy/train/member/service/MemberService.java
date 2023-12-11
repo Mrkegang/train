@@ -1,10 +1,10 @@
 package www.kgstudy.train.member.service;
 
-import org.springframework.stereotype.Service;
+import www.kgstudy.train.member.req.MemberRegisterReq;
 
 public interface MemberService {
 
-    int count();
+    Integer count();
 
-    long register(String mobile);
+    Long register(MemberRegisterReq req);
 }
