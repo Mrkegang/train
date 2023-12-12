@@ -1,11 +1,13 @@
 package www.kgstudy.train.member.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.IdUtil;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import www.kgstudy.train.common.exception.BusinessException;
 import www.kgstudy.train.common.exception.BusinessExceptionEnmu;
 import www.kgstudy.train.common.resp.CommonResp;
+import www.kgstudy.train.common.util.SnowUtil;
 import www.kgstudy.train.member.domain.Member;
 import www.kgstudy.train.member.domain.MemberExample;
 import www.kgstudy.train.member.mapper.MemberMapper;
@@ -38,7 +40,7 @@ public class MemberServiceImpl implements MemberService {
         }
 
         Member member = new Member();
-        member.setId(System.currentTimeMillis());
+        member.setId(SnowUtil.getSnowflakeNextId());
         member.setMobile(mobile);
         memberMapper.insert(member);
 
