@@ -3,6 +3,8 @@ package www.kgstudy.train.member.service.impl;
 import cn.hutool.core.collection.CollUtil;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
+import www.kgstudy.train.common.exception.BusinessException;
+import www.kgstudy.train.common.exception.BusinessExceptionEnmu;
 import www.kgstudy.train.common.resp.CommonResp;
 import www.kgstudy.train.member.domain.Member;
 import www.kgstudy.train.member.domain.MemberExample;
@@ -32,7 +34,7 @@ public class MemberServiceImpl implements MemberService {
 
         if (CollUtil.isNotEmpty(list)) {
 //            return list.get(0).getId();
-            throw new RuntimeException("手机号已注册！");
+            throw new BusinessException(BusinessExceptionEnmu.MEMBER_MOBILE_EXIST);
         }
 
         Member member = new Member();

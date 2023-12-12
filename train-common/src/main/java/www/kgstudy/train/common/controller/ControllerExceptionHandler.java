@@ -6,6 +6,7 @@ import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import www.kgstudy.train.common.exception.BusinessException;
 import www.kgstudy.train.common.resp.CommonResp;
 
 /**
@@ -41,15 +42,15 @@ public class ControllerExceptionHandler {
      * @param e
      * @return
      */
-//    @ExceptionHandler(value = BusinessException.class)
-//    @ResponseBody
-//    public CommonResp exceptionHandler(BusinessException e) {
-//        CommonResp commonResp = new CommonResp();
-//        LOG.error("业务异常：{}", e.getE().getDesc());
-//        commonResp.setSuccess(false);
-//        commonResp.setMessage(e.getE().getDesc());
-//        return commonResp;
-//    }
+    @ExceptionHandler(value = BusinessException.class)
+    @ResponseBody
+    public CommonResp exceptionHandler(BusinessException e) {
+        CommonResp commonResp = new CommonResp();
+        LOG.error("业务异常：{}", e.getE().getDesc());
+        commonResp.setSuccess(false);
+        commonResp.setMessage(e.getE().getDesc());
+        return commonResp;
+    }
 
     /**
      * 校验异常统一处理
